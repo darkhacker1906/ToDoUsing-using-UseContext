@@ -3,8 +3,7 @@ import { MyNoteContext } from "../context/NoteState";
 import "./TablePage.css";
 
 function TablePage() {
-  var { todosList,delete_Click,edit_Click } = useContext(MyNoteContext);
-  console.log(todosList,"hbbbbbbbbb");
+  var { todosList,delete_Click,edit_Click,toggle } = useContext(MyNoteContext);
   return (
     <div>
       <table id="todos">
@@ -24,8 +23,9 @@ function TablePage() {
                   <div className="delete_icon">
                     <i className="material-icons" onClick={()=>delete_Click(item.id)}>delete</i>
                   </div>
-                  <div>
-                    <i className="fa-regular fa-pen-to-square" onClick={edit_Click(item.id)}></i>
+                  <div>       
+                       <i className="fa-regular fa-pen-to-square" onClick={()=>edit_Click(item.id)}></i>
+                   
                   </div>
                 </div>
               </div>

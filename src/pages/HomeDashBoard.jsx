@@ -2,7 +2,7 @@ import React from "react";
 import NoteState from "../context/NoteState";
 import Inputfield from "../comonents/InputField";
 import TablePage from "../comonents/TablePage";
-import "./HomeDashBoard.css";
+import './homepage.css'
 
 function HomeDashBoard() {
   return (

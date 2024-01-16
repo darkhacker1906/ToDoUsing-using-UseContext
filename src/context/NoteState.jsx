@@ -11,7 +11,21 @@ const NoteState = (props) => {
     setInputText(e.target.value);
   };
   const handleClick = () => {
-    if (inputText.trim() !== "") {
+    if(!inputText){
+
+    }
+    else if (inputText && !toggle) {
+      setTodosList(
+        todosList.map((prevItem) => {
+          if (prevItem.id === isEditItem) {
+            return { ...prevItem, name: inputText };
+          }
+          return prevItem;
+        })
+      );
+    }
+    
+    else if (inputText.trim() !== "") {
       const allInputData={ id: uuidv4(), name: inputText };
       setTodosList([...todosList, allInputData]);
       setInputText("");
@@ -25,18 +39,16 @@ const NoteState = (props) => {
     setTodosList(updatedItems);
   };
 
-  // const edit_Click=(id)=>{
-  // let EditItem=todosList.find(item=>item.id===id);
-    
-  // }
-  // }
   const edit_Click = (id) => {
     let newEditItem = todosList.find((item) => {
       return item.id === id;
+  
     });
+    console.log(newEditItem);
     setToggle(false);
-    setData(newEditItem.name);
+    setInputText(newEditItem.name);
     setIsEditItem(id);
+    // setErrors("");
   };
 
   return (
