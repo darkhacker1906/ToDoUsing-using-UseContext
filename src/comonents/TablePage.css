@@ -46,3 +46,6 @@
 .main_div {
   word-break: break-all;
 }
+.fa-regular,.material-icons:hover{
+  cursor: pointer;
+}
