@@ -1,10 +1,10 @@
 import React from 'react'
-import HomePage from './pages/HomePage'
+import HomeDashBoard from './pages/HomeDashBoard'
 
 function App() {
   return (
     <div>
-    <HomePage/>
+    <HomeDashBoard/>
     </div>
   )
 }
