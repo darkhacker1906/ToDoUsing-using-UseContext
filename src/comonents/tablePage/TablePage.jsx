@@ -1,15 +1,16 @@
 import React, { useContext } from "react";
-import { MyNoteContext } from "../context/NoteState";
+import { MyNoteContext } from "../../context/ToDoState";
 import "./TablePage.css";
 
 function TablePage() {
   var { todosList,delete_Click,edit_Click,toggle } = useContext(MyNoteContext);
   return (
-    <div>
+    < >
       <table id="todos">
         <thead>
           <tr>
             <th>Todos</th>
+           
           </tr>
         </thead>
         <tbody>
@@ -25,7 +26,6 @@ function TablePage() {
                   </div>
                   <div>       
                        <i className="fa-regular fa-pen-to-square" onClick={()=>edit_Click(item.id)}></i>
-                   
                   </div>
                 </div>
               </div>
@@ -33,7 +33,7 @@ function TablePage() {
           ))}
         </tbody>
       </table>
-    </div>
+    </>
   );
 }
 

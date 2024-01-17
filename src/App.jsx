@@ -1,11 +1,15 @@
 import React from 'react'
-import HomeDashBoard from './pages/HomeDashBoard'
+import HomeDashBoard from './pages/homeDashBoard/HomeDashBoard'
+import ToDoState from './context/ToDoState'
 
 function App() {
   return (
-    <div>
+    <>
+    <ToDoState>
     <HomeDashBoard/>
-    </div>
+    </ToDoState>
+ 
+    </>
   )
 }
 
