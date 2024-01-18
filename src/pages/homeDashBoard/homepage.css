@@ -13,3 +13,7 @@ h2 {
   .button_div{
     display: flex;
   }
+  .list_button{
+    display: flex;
+    margin-top: 10px;
+  }

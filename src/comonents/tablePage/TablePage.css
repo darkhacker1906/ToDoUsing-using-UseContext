@@ -8,9 +8,11 @@
 #todos td,
 #todos th {
   padding: 8px;
+  display: flex;
 }
 #todos tr:nth-child(odd) {
-  background-color: #cfcbcb;
+  /* background-color: #cfcbcb; */
+  background-color:   #e3e7e9;;
 }
 #todos tr:nth-child(even) {
   background-color: #f2f2f2;
@@ -48,4 +50,13 @@
 }
 .fa-regular,.material-icons:hover{
   cursor: pointer;
+}
+.fa-regular{
+  margin-right:7px;
+}
+td .check_div{
+  margin-right:10px;
+}
+.para{
+  margin:0px;
 }

@@ -7,6 +7,7 @@ const ToDoState = (props) => {
   const [toggle,setToggle]=useState(true);
   const [isEditItem,setIsEditItem]=useState(null);
   const [checked,setChecked]=useState(false);
+  const [filterType,setFilterType]=useState("all");
 
   const handleChange = (e) => {
     setInputText(e.target.value);
@@ -18,37 +19,39 @@ const ToDoState = (props) => {
     setIsEditItem(null);
   }
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault();
     if(!inputText){
-      console.log(inputText,"hhhhhhhh");
+      setInputText("");
+      setToggle(true);
     }
-    else if (inputText && !toggle) {
-    
+   else if (inputText && !toggle && inputText!=="") {
       setTodosList(
-        todosList.map((prevItem) => {
-          if (prevItem.id === isEditItem) {
+        todosList.map((prevItem,a) => {
+          console.log(a);
+          if (prevItem.id === isEditItem ) {
             return { ...prevItem, name: inputText };
           }
           setToggle(true);
+            setIsEditItem(null);
           return prevItem;
         })
       );
     }
     
-    else if (inputText.trim() !== "") {
+    else if (inputText.trim() !== "" && toggle) {
       
-      const allInputData={ id: uuidv4(), name: inputText ,checked : checked};
+      const allInputData={ id: uuidv4(), name: inputText};
       setTodosList([...todosList, allInputData]);
       setInputText("");
     }
     setInputText("");
   };
 
-
   const delete_Click = (id) => {
     const updatedItems = todosList.filter(item => item.id !== id);
     setTodosList(updatedItems);
-    setInputText("");
+    // setInputText("");
   };
 
   const edit_Click = (id) => {
@@ -66,13 +69,23 @@ const ToDoState = (props) => {
     );
    
   };
-  useEffect(()=>{
-    console.log(todosList,'SS')
-  },[inputText])
 
+
+  const filteritems=()=>{
+    switch (filterType){
+      case "all":
+        return todosList;
+      case "completed":
+        return todosList.filter((item)=>item.check)
+      case "incomplete":
+        return todosList.filter((item)=>!item.check)
+        default:
+          return todosList;
+    }
+  }
   return (
     <MyNoteContext.Provider
-      value={{ inputText, handleChange, handleClick, todosList,delete_Click,edit_Click,toggle,handleCancel,handleCheckBox,checked}}
+      value={{ inputText, handleChange, handleClick, todosList,delete_Click,edit_Click,toggle,handleCancel,handleCheckBox,checked,filteritems}}
     >
       {props.children}
     </MyNoteContext.Provider>

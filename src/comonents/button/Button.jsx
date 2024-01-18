@@ -5,7 +5,7 @@ import './Button.css'
 function Button({title,handleButton}) {
   return (
     <div>
-      <button id='submit'onClick={handleButton}>{title}</button>
+      <button type="submit" onClick={handleButton}>{title}</button>
     </div>
   )
 }
