@@ -1,15 +1,16 @@
 import React, { useContext } from "react";
 import { MyNoteContext } from "../../context/ToDoState";
 import "./TablePage.css";
+import CheckBox from "../CheckBox";
 
 function TablePage() {
-  var { todosList,delete_Click,edit_Click,toggle } = useContext(MyNoteContext);
+  var { todosList,delete_Click,edit_Click,handleCheckBox} = useContext(MyNoteContext);
   return (
     < >
       <table id="todos">
         <thead>
           <tr>
-            <th>Todos</th>
+    
            
           </tr>
         </thead>
@@ -18,7 +19,9 @@ function TablePage() {
             <tr key={item.id}>
               <div className="row_div">
                 <td>
+                  
                   <div className="main_div">{item.name}</div>
+                  <CheckBox checked={item.checked} checkBoxClick={() => handleCheckBox(item.id)}/>
                 </td>
                 <div className="icon_div">
                   <div className="delete_icon">

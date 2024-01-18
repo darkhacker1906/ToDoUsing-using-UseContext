@@ -3,8 +3,6 @@ import React, { useContext } from 'react'
 import './Button.css'
 
 function Button({title,handleButton}) {
-  //console.log(handleButton);
-
   return (
     <div>
       <button id='submit'onClick={handleButton}>{title}</button>

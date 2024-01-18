@@ -4,11 +4,9 @@ import TablePage from "../../comonents/tablePage/TablePage";
 import './homepage.css'
 import Button from "../../comonents/button/Button";
 import { MyNoteContext } from "../../context/ToDoState";
-import ToDoState from "../../context/ToDoState";
 
 function HomeDashBoard() {
   const {toggle,handleClick,handleCancel,edit_Click}=useContext(MyNoteContext);
-// console.log(toggle,"  ");
   return (
     <div>
       <div className="home_div">
