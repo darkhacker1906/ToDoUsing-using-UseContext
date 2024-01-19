@@ -1,11 +1,15 @@
 import React from 'react'
-import HomePage from './pages/HomePage'
+import HomeDashBoard from './pages/homeDashBoard/HomeDashBoard'
+import ToDoState from './context/ToDoState'
 
 function App() {
   return (
-    <div>
-    <HomePage/>
-    </div>
+    <>
+    <ToDoState>
+    <HomeDashBoard/>
+    </ToDoState>
+ 
+    </>
   )
 }
 
