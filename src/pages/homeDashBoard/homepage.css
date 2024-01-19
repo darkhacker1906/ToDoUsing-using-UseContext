@@ -17,3 +17,7 @@ h2 {
     display: flex;
     margin-top: 10px;
   }
+  .error-message{
+    color: red;
+    margin:0;
+  }
