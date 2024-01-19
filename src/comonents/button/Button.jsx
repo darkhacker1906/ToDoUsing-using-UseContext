@@ -1,5 +1,4 @@
-import React, { useContext } from 'react'
-// import { MyNoteContext } from '../../context/ToDoState'
+import React from 'react'
 import './Button.css'
 
 function Button({title,handleButton}) {

@@ -1,16 +1,16 @@
 import React, { useContext } from "react";
-import { MyNoteContext } from "../../context/ToDoState";
-import "./TablePage.css";
+import { TodoAppContext } from "../../context/TodoContext";
+import "./TodoTable.css";
 import CheckBox from "../checkbox/CheckBox";
 
-function TablePage() {
+function TodoTable() {
   var {
     todosList,
     delete_Click,
     edit_Click,
     handleCheckBox,
     filterType,
-  } = useContext(MyNoteContext);
+  } = useContext(TodoAppContext);
   const sortedTodos = todosList.filter((item) => {
     if (filterType === "all") {
       return true;
@@ -65,4 +65,4 @@ function TablePage() {
   );
 }
 
-export default TablePage;
+export default TodoTable;

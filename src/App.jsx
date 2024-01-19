@@ -1,14 +1,13 @@
 import React from 'react'
 import HomeDashBoard from './pages/homeDashBoard/HomeDashBoard'
-import ToDoState from './context/ToDoState'
+import TodoContext from './context/TodoContext'
 
 function App() {
   return (
     <>
-    <ToDoState>
+    <TodoContext>
     <HomeDashBoard/>
-    </ToDoState>
- 
+    </TodoContext>
     </>
   )
 }

@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import { MyNoteContext } from "../../context/ToDoState";
+import {TodoAppContext}  from "../../context/TodoContext";
 import './InputField.css'
 
 function InputField() {
-  const { inputText, handleChange,handleClick} = useContext(MyNoteContext);
+  const { todoText, handleChange,handleClick} = useContext(TodoAppContext);
   
   const onHandleKeyDown=(e)=>{
-    if (e.key === "Enter" && inputText.trim() !== "") {
+    if (e.key === "Enter" && todoText.trim() !== "") {
       handleClick();
     }
   }
@@ -16,7 +16,7 @@ function InputField() {
       className="text_todo"
         type="text"
         placeholder="Enter your text"
-        value={inputText}
+        value={todoText}
         onChange={handleChange} 
         onKeyDown={onHandleKeyDown}
       />

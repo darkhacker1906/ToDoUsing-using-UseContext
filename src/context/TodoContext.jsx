@@ -1,50 +1,52 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-const MyNoteContext = createContext();
-const ToDoState = (props) => {
-  const [inputText, setInputText] = useState("");
+const TodoAppContext = createContext();
+const TodoContext = (props) => {
+  const [todoText, setTodoText] = useState("");
   const [todosList, setTodosList] = useState([]);
   const [toggle, setToggle] = useState(true);
-  const [isEditItem, setIsEditItem] = useState(null);
+  const [editItemId, setEditItemId] = useState(null);
   const [checked, setChecked] = useState(false);
   const [filterType, setFilterType] = useState("all");
   const [formError, setFormError] = useState("");
 
   const handleChange = (e) => {
-    setInputText(e.target.value);
+    setTodoText(e.target.value);
     setFormError("");
   };
 
   const handleCancel = (e) => {
     setToggle(true);
-    setInputText("");
-    setIsEditItem(null);
+    setTodoText("");
+    setEditItemId(null);
     setFormError("");
   };
 
   const handleClick = (e) => {
     e.preventDefault();
-    if (!inputText.trim()) {
+    if (!todoText.trim()) {
       setFormError("Please enter any todo.");
       return;
-    } else if (inputText && !toggle && inputText !== "") {
+    } 
+    else if (todoText && !toggle ) {
       setTodosList(
-        todosList.map((prevItem, a) => {
-          console.log(a);
-          if (prevItem.id === isEditItem) {
-            return { ...prevItem, name: inputText };
+        todosList.map((prevItem) => {
+          if (prevItem.id === editItemId) {
+            return { ...prevItem, name: todoText};
           }
 
           return prevItem;
         })
       );
       setToggle(true);
-      setIsEditItem(null);
-    } else if (inputText.trim() !== "" && toggle) {
-      const allInputData = { id: uuidv4(), name: inputText };
+      setEditItemId(null);
+    } 
+    
+    else if (todoText.trim() !== "" && toggle) {
+      const allInputData = { id: uuidv4(), name: todoText};
       setTodosList([...todosList, allInputData]);
     }
-    setInputText("");
+    setTodoText("");
     setFormError("");
   };
 
@@ -58,8 +60,8 @@ const ToDoState = (props) => {
       return item.id === id;
     });
     setToggle(false);
-    setInputText(newEditItem.name);
-    setIsEditItem(id);
+    setTodoText(newEditItem.name);
+    setEditItemId(id);
   };
   const handleCheckBox = (id) => {
     setTodosList((prevTodos) =>
@@ -71,9 +73,9 @@ const ToDoState = (props) => {
   };
 
   return (
-    <MyNoteContext.Provider
+    <TodoAppContext.Provider
       value={{
-        inputText,
+        todoText,
         handleChange,
         handleClick,
         todosList,
@@ -90,9 +92,9 @@ const ToDoState = (props) => {
       }}
     >
       {props.children}
-    </MyNoteContext.Provider>
+    </TodoAppContext.Provider>
   );
 };
 
-export default ToDoState;
-export { MyNoteContext };
+export default TodoContext;
+export { TodoAppContext };

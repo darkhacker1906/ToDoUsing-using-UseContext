@@ -1,32 +1,32 @@
 import React, { useContext, useState } from "react";
 import Inputfield from "../../comonents/inputField/InputField";
-import TablePage from "../../comonents/tablePage/TablePage";
 import "./homepage.css";
 import Button from "../../comonents/button/Button";
-import { MyNoteContext } from "../../context/ToDoState";
+import { TodoAppContext } from "../../context/TodoContext";
+import TodoTable from "../../comonents/todoTable/TodoTable";
 
 function HomeDashBoard() {
   const {
     toggle,
     handleClick,
     handleCancel,
-    inputText,
-    setInputText,
+    todoText,
+    setTodoText,
     todosList,
     handleFilter,
     formError
-  } = useContext(MyNoteContext);
+  } = useContext(TodoAppContext);
 
   const [inputError, setInputError] = useState("");
 
   const onHandleKeyDown = (e) => {
-    if (e.key === "Enter" && inputText.trim() !== "") {
+    if (e.key === "Enter" && todoText.trim() !== "") {
       e.preventDefault();
       handleClick();
     }
   };
   const handleInputChange = (e) => {
-    setInputText(e.target.value);
+    setTodoText(e.target.value);
     setInputError("");
   };
 
@@ -41,7 +41,7 @@ function HomeDashBoard() {
             <Inputfield
               handleKeyDown={onHandleKeyDown}
               handleChange={handleInputChange}
-              value={inputText}
+              value={todoText}
               required
             />
             <div className="button_div">
@@ -87,7 +87,7 @@ function HomeDashBoard() {
           </div>
         )}
 
-        <TablePage />
+        <TodoTable />
       </div>
     </div>
   );
